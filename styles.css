@@ -1,0 +1,841 @@
+/* Global Styles */
+
+html{
+    scroll-behavior: smooth;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+ul {
+    list-style: none;
+    font-family: "Lato", sans-serif;
+}
+
+p {
+    font-family: 'Roboto Slab', serif;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+img {
+    max-width: 100%;
+}
+
+section {
+    margin: 40px 20px;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    color: #003366;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #003366;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+/* Icon Front-Awesomes */
+.fa{
+    font-size: 50px;
+    color: white;
+}
+.fa-flip{
+    --fa-animation-duration:3s;
+}
+.fa-circle{
+    color: #003366;
+}
+.fa-comment{
+    color: black;
+}
+
+/* Header */
+header {
+    height: 100vh;
+    width: 100%;
+    background-color: #34495e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Texte des 4 éléments li */
+.contenu {
+    font-family: "Lato", sans-serif;
+    font-size: 35px;
+    line-height: 40px;
+    color: #ecf0f1;
+
+}
+/* Container principal for the animated text */
+.contenu__container {
+    font-weight: 600;
+    padding: 150px 40px; /* On ajoute un padding pour pouvoir afficher les 4 éléments li */
+    position: relative;
+}
+
+.contenu__container:before,
+.contenu__container:after {
+    position: absolute;
+    top: 0;
+    color: #16a085;
+    font-size: 42px;
+    line-height: 335px;
+    animation: opacity 4s infinite;
+}
+
+.contenu__container:before{
+    content: "[";
+    left: 0;
+}
+
+.contenu__container:after {
+    content: "]";
+    right: 0;
+}
+
+.contenu__container__text {
+    display: inline;
+    float: left;
+    margin: 0;
+}
+/* Style for paragraphs inside the container */
+.contenu__container p {
+    font-family: "Lato", sans-serif;
+    font-size: 35px;
+    line-height: 40px;
+    color: #ecf0f1;
+    font-weight: bold;
+}
+
+.contenu__container__list {
+    padding-left: 180px;
+    animation: change 10s infinite;
+}
+
+/* Animation for hiden the bracket */
+@keyframes opacity {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+/* Animation for deplace the elements verticaly in the header */
+@keyframes change {
+    0%, 20%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    25%, 45% {
+        transform: translate3d(0, -25%, 0);
+    }
+    50%, 70% {
+        transform: translate3d(0, -50%, 0);
+    }
+    75%, 95% {
+        transform: translate3d(0, -75%, 0);
+    }
+}
+
+/* Scroll Down Container */
+.scroll-down-container {
+    position: absolute;
+    bottom: 20px;
+}
+/* Container for the arrow */
+.scroll-box {
+    width: 100px;
+    height: 50px;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow {
+    border-right: 16px solid transparent;
+    border-left: 16px solid transparent;
+    border-top: 20px solid #f7df6c;
+    animation: moveArrow 800ms linear 1s infinite alternate-reverse;
+}
+/* Animation of the Arrow at the bottom of the header */
+@keyframes moveArrow {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+/* Navigation Bar */
+.logo-nav {
+    position: absolute;
+    top: 0;
+    align-items: center;
+    z-index: 1000; /* the logo layer is in front of the header */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+/* the NavBar is initialized to transparent and the transition takes effect on scroll in the animation.js*/
+nav {
+    position: static;
+    width: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+/* The NavBar is apparent on scroll in the animation.js */
+nav.scrolled {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #34495e;
+    z-index: 999;
+}
+/* The logo is hidden on scroll */
+nav.scrolled .logo-nav {
+    display: none; 
+}
+
+nav ul {
+    margin: 0;
+    padding: 10px;
+    padding-top: 25px;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+.nav-links a.active,
+nav ul li a.active {
+    color: #ffcc00;
+}
+
+/* Responsive Navigation */
+nav ul.nav-links {
+    display: none;
+}
+
+nav.scrolled ul.nav-links {
+    display: flex;
+}
+
+/* About Section */
+#about {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#about .container img {
+    width: 200px;
+    height: 250px;
+    border-radius: 75%;
+    justify-content: center;
+}
+
+.about-content {
+    display: flex;
+    justify-content: center;
+}
+
+.about-content p {
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-content a {
+    text-decoration: none;
+    color: #222;
+}
+
+.about-content a:hover{
+    color: blue;
+}
+
+/* Expertise Section */
+#expertise {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.expertise-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.expertise-box {
+    width: 30%;
+    text-align: center;
+    padding: 20px;
+}
+
+.expertise-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.expertise-box p {
+    font-size: 20px;
+}
+/* Icône Font-Awesome au survol */
+.fa:hover {
+    -webkit-animation: fa-flip 1s infinite linear;
+    -moz-animation: fa-flip 1s infinite linear;
+    -o-animation: fa-flip 1s infinite linear;
+    animation: fa-flip 1s infinite linear;
+}
+
+/* Technologies*/
+#technologies{
+    width: 100%;
+    height: 40%;
+    text-align: center;
+}
+
+.tech-logos h2{
+    text-align: start;
+    font-size: 15px;
+}
+
+.logo{
+    height: 100%;
+    width: 50%;
+    float: left;
+}
+
+.tech-logos{
+    display: inline-block;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.logo img{
+    display: inline-block;
+    padding: 30px;
+    width: 50%;
+    max-width: 300px;
+    max-height: 300px;
+
+}
+
+.trusted{
+    float: right;
+    width: 50%;
+}
+
+.trusted h2{
+    text-align: start;
+    font-size: 15px;
+}
+
+.trusted img{
+    height: auto;
+    width: 35%;
+    max-width: 30%;
+    align-items: start;
+}
+
+/* Cv */
+
+#cv{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 20%;
+    background-image: url(./img/img_cv.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    padding: 30px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 1%;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: blue;
+    background-color: transparent; 
+    border: 2px solid rgba(109, 143, 255, 0.5); 
+    border-radius: 5px; 
+    text-transform: none; 
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: rgba(109, 143, 255, 0.137); 
+    border-color: white; 
+}
+/* Projectt section */
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px; /* Add space between the card */
+    justify-content: center;
+    justify-items: start;
+    padding: 20px;
+}
+/* Card Container */
+.card {
+    position: relative;
+    width: 33%;
+    height: 100%;
+    perspective: 1000px;
+    display: inline-block;
+    border-radius: 15px;
+    overflow: hidden; /* Hides everything that extends beyond the card */
+    transition: transform 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); /* Little Shadow */
+    aspect-ratio: 2/1; /* Sets a width-to-height ratio of 2:1, ensuring that the element maintains these proportions regardless of its size. */
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.02); 
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow in hover */
+}
+
+.card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    border-radius: 15px;
+}
+/* General styles for the front and the back of the card */ 
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+}
+/* Style for the front of the card */
+.card-front {
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    overflow: hidden;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.05); /* Ombre intérieure douce */
+}
+/* Style for the back of the card */
+.card-back {
+    background-color: #f4f4f4;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+/* Add the Animation on click in API.js at the end */
+.card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.card h3 {
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: #34495e;
+    text-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+
+}
+
+.card-front h3{
+    display: none;
+}
+
+.card p {
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.6;
+    color: #666;
+}
+
+.card:hover .card-inner {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the top left box language of projects */
+.top-left-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px; 
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 8px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; /* Hides any image overhang */
+}
+/* Image for the top left badge */
+.top-left-badge img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain; 
+    border-radius: 8px; 
+}
+/* Button for redirect to the GitHub project */
+.github-button {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    padding: 10px 20px;
+    background-color: #34495e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Change the cursor for the accesibility */
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.github-button:hover {
+    background-color: #555;
+}
+
+/*Section Contact*/
+#contact{
+    background-color: #f0f0f0;
+    height: 10%;
+    width: 100%;
+    text-align: center;
+}
+
+#contact p{
+    margin-top: 1%;
+}
+
+.email-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: blue;
+    border: 2px solid rgba(255, 255, 255, 0.5); 
+    border-radius: 5px; 
+    margin-top: 15px;
+    text-align: center;
+    transition: background-color 0.8s ease, border-color 0.3s ease;
+}
+
+.email-button:hover{
+    background-color: rgba(109, 143, 255, 0.137); 
+    border-color: white; 
+}
+/* Footer */
+footer {
+    background-color: #003366;
+    padding: 40px 0;
+    text-align: center;
+}
+
+footer p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+
+.social-media li{
+    display: inline-block;
+    margin: 0px 15px;
+}
+
+/* Other Screen Design */
+@media (max-width: 1200px) {
+    nav ul {
+        padding-top: 10px;
+    }
+
+    #about .container img {
+        width: 150px;
+        height: 200px;
+    }
+
+    .expertise-container {
+        justify-content: space-around;
+    }
+    .card {
+        width: 45%;  /* Reduce by 45 % if there are 2 cards on the same line */
+        height: 350px;
+    }
+}
+
+/* Styles for small screens (tablets) */
+@media (max-width: 768px) {
+    .about-content,
+    #cv,
+    .expertise-container {
+        flex-direction: column;
+    }
+
+    .expertise-container {
+        align-items: center;
+    }
+
+    .expertise-box,
+    .logo,
+    .trusted,
+    .button{
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .expertise-box img {
+        width: 100px;
+        height: auto;
+    }
+
+    .expertise-box h3,
+    .expertise-box p,
+    .button,
+    .contenu__container p,
+    footer p,
+    p,
+    #cv .button {
+        font-size: 15px;
+    }
+
+    .contenu__container {
+        padding: 150px 10px;
+        font-size: 15px;
+    }
+
+    .contenu__container__list {
+        padding-left: 70px;
+    }
+
+    .contenu__container:before,
+    .contenu__container:after {
+        font-size: 32px;
+    }
+
+    footer {
+        padding: 20px 10px;
+    }
+
+    .social-media li {
+        margin: 0 10px;
+    }
+
+    .logo img {
+        padding: 30px;
+        width: 30%;
+        max-width: 250px;
+        display: inline-block;
+    }
+
+    #expertise,
+    #contact,
+    #technologies,
+    #project,
+    #cv {
+        width: 100%;
+        margin: 0;
+    }
+
+    #project {
+        height: 40%;
+    }
+
+    #contact,
+    #cv {
+        height: 10%;
+    }
+
+    #technologies {
+        height: 40%;
+    }
+
+    .fa-stack {
+        font-size: 60px;
+    }
+
+    .card-front {
+        padding: 25px;
+    }
+
+    .card h3 {
+        font-size: 20px;
+        display: flex;
+    }
+
+    .card p {
+        font-size: 12px;
+        padding: 15px;
+    }
+
+    .top-left-badge img {
+        height: 100%;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        color: #003366;
+        text-align: center;
+    }
+
+    h3 {
+        color: #003366;
+        text-align: left;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo-nav img {
+        width: 50%;
+    }
+
+    .logo-nav {
+        padding-top: 1%;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav.scrolled ul {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    nav ul li {
+        display: inline-block;
+        padding: 0 8px;
+    }
+
+    nav ul li a {
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .tech-logos h2,
+    .trusted h2 {
+        padding-left: 10px;
+    }
+
+    .email-button {
+        padding: 10px 20px;
+    }
+
+    .fa-stack.fa-4x {
+        font-size: 40px;
+    }
+
+    .fa {
+        font-size: 30px;
+    }
+}
+
+/* Mobile-specific styling */
+@media (max-width: 576px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    nav ul {
+        text-align: center;
+    }
+    #project{
+        height: 40%;
+    }
+     #root{
+        width: 100%;
+    } 
+}
+
+/* Styles for very small screens (phones) */
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+    .card h3 {
+        font-size: 18px;
+        bottom: 0px; /* Ajuste la position du titre pour qu'il soit visible */
+    }
+    .card p {
+        font-size: 10px;
+        padding: 0;
+    }
+    .card-front img{
+        width: 100%;
+        height: auto;
+    }
+    .top-left-badge img{
+        height: 100%;
+    }
+}
+
+@media (max-width: 1518px) and (min-width: 769px) {
+    .logo img {
+        padding: 30px;
+        width: 100%;
+        max-width: 150px;
+        display: inline-block;
+    }
+}
